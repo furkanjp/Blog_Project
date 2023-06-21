@@ -1,0 +1,34 @@
+﻿@model Entity_Layer.Concrete.Blog
+
+@{
+    ViewData["Title"] = "EditBlog";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Admin Blog Düzenleme Sayfası</h1>
+<br />
+
+@using (Html.BeginForm("EditBlog", "AdminBlog", FormMethod.Post))
+{
+    @Html.Label("Blog ID")
+    @Html.TextBoxFor(x=>x.BlogID,new{@class="form-control"})
+    <br />
+    @Html.Label("Blog Başlığı")
+    @Html.TextBoxFor(x=>x.BlogTitle,new{@class="form-control"})
+    <br />
+    @Html.Label("Blog Görseli")
+    @Html.TextBoxFor(x=>x.BlogImage,new{@class="form-control"})
+    <br />
+    @Html.Label("Blog Thumbnail")
+    @Html.TextBoxFor(x=>x.BlogThumbnail,new{@class="form-control"})
+    <br />
+    @Html.Label("Blog Kategori")
+    @Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>)ViewBag.cv, new{@class="form-control"})
+    ;
+    <br />
+    @Html.Label("Blog İçeriği")
+    @Html.TextAreaFor(x=>x.BlogContent,new{@class="form-control"})
+
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+}

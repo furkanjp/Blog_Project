@@ -1,0 +1,59 @@
+﻿@model Entity_Layer.Concrete.Message2
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox ">
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <div class="space-25"></div>
+                            <h5>Dosyalar</h5>
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li><a href="/Admin/AdminMessage/InBox/"> <i class="fa fa-inbox "></i> Gelen Mesajlar  </a></li>
+                                <li><a href="/Admin/AdminMessage/SendBox/"> <i class="fa fa-envelope-o"></i> Giden Mesajlar</a></li>
+                            </ul>
+                            <a class="btn btn-block btn-primary compose-mail" href="/Admin/AdminMessage/ComposeMessage/">Mesaj Oluştur</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 animated fadeInRight">
+                <div class="mail-box-header">
+                    <h2>
+                        Mesaj Ayrıntıları
+                    </h2>
+                        <div class="mail-tools tooltip-demo m-t-md">
+
+
+                            <h3>
+                            <span class="font-normal">Konu: </span>@Html.TextBoxFor(x=>x.Subject,new{@class="form-control",disabled = "disabled"})
+                            </h3>
+                            <h3>
+                            <span class="font-normal">Tarih:</span> @Html.TextBoxFor(x=>x.MessageDate,new{@class="form-control",disabled = "disabled"})
+                            </h3>
+                        </div>
+                </div>
+
+                <div class="mail-box">
+                    <div class="mail-body">
+                        <p>
+                            @Html.TextAreaFor(x=>x.MessageDetails,20,3,new{@class="form-control",disabled = "disabled"})
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+

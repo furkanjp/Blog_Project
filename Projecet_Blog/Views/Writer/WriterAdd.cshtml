@@ -1,0 +1,44 @@
+﻿@model Projecet_Blog.Models.AddProfileImage
+@{
+    ViewData["Title"] = "WriterAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<form class="form-group" method="post" enctype="multipart/form-data">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yazar Profili Ekleme</h4>
+                <br>
+                @Html.HiddenFor(x=>x.WriterID,new {@class="form-control"})
+                <p class="card-description"> Basic form elements </p>
+                <div class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">İsim</label>
+                        @Html.TextBoxFor(x=>x.WriterName,new {@class="form-control"})
+                        @Html.ValidationMessageFor(x=>x.WriterName)
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Mail Adresi</label>
+                        @Html.TextBoxFor(x=>x.WriterMail,new {@class="form-control"})
+                        @Html.ValidationMessageFor(x=>x.WriterMail)
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Şifre</label>
+                        @Html.PasswordFor(x=>x.WriterPassword,new {@class="form-control"})
+                        @Html.ValidationMessageFor(x=>x.WriterPassword)
+                    </div>
+                    <div class="form-group">
+                        <label>Yazar Profil Resmi</label>
+                        <input type="file" name="WriterImage" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Yazar Hakkında</label>
+                        @Html.TextAreaFor(x=>x.WriterAbout,12,3,new {@class="form-control"})
+                        <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                        <button class="btn btn-gradient-danger mr-2">İptal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

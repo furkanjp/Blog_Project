@@ -1,0 +1,33 @@
+﻿@model Entity_Layer.Concrete.Message2
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1> Yeni Mesaj Oluştur</h1>
+@using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
+{
+    @Html.Label("Alıcı")
+    @*<label class="col-sm-2 col-form-label">Alıcı:</label>*@
+    <select class="form-control" name="ReceiverID">
+        <option value="">Seçin</option>
+        @foreach (var receiver in ViewBag.Receivers)
+        {
+            <option value="@receiver.Value">@receiver.Text</option>
+        }
+    </select>
+
+    <br />
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x=>x.Subject,new {@class="form-control"})
+   
+    <br />
+   
+    @Html.Label("Blog içerik")
+    @Html.TextAreaFor(x=>x.MessageDetails,15,3,new {@class="form-control"})
+    <br />
+    <button class="btn btn-info"> Gönder</button>
+
+    <br />
+}
+

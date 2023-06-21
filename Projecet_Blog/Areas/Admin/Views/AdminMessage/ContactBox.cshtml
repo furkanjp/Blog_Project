@@ -1,0 +1,28 @@
+﻿@using Entity_Layer.Concrete
+@model List<Contact>
+@{
+    ViewData["Title"] = "ContactBox";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>İletişim Kısmından Gelen Mesajlar</h1>
+<table class="table table-borderless">
+    <tr>
+        <th>Gönderen Mail</th>
+        <th>Gönderen</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ContactMail</td>
+            <td>@item.ContactUserName</td>
+            <td>@item.ContactSubject</td>
+            <td>@item.ContactMessage</td>
+            <td> @(((DateTime)item.ContactDate).ToString("dd-MMMM-yyyy"))</td>
+            <td><a href="/Admin/AdminMessage/ContactMessageDetails/@item.ContactID" class="btn btn-primary">Mesajı Aç</a></td>
+        </tr>
+    }
+</table>

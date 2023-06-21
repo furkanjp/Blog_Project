@@ -1,0 +1,20 @@
+﻿@model Entity_Layer.Concrete.Contact
+@{
+    ViewData["Title"] = "ContactMessageDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>İletişim Mesaj Detay</h1>
+@Html.Label("Gönderen ")
+@Html.TextBoxFor(x=>x.ContactMail,new{@class="form-control",disabled = "disabled" })
+@Html.TextBoxFor(x=>x.ContactUserName,new{@class="form-control",disabled = "disabled" })
+<br />
+@Html.Label("Mesaj Konusu")
+@Html.TextBoxFor(x=>x.ContactSubject,new{@class="form-control",disabled = "disabled"})
+<br />
+@Html.Label("Mesaj İçeriği")
+@Html.TextAreaFor(x=>x.ContactMessage,20,3,new{@class="form-control",disabled = "disabled"})
+<br />
+<a href="/Admin/AdminMessage/ContactBox/" class="btn btn-primary"> Tüm Mesajlara Dön</a>
+
+

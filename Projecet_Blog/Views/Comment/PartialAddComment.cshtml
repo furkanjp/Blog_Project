@@ -1,0 +1,117 @@
+﻿@*<div class="comment-top">
+    <h4>Bir Yorum Ekleyin</h4>
+    <div class="comment-bottom">
+        <form method="post" asp-action="PartialAddComment" asp-controller="Comment">
+
+            <input class="form-control" type="text" placeholder="Adınız Soyadınız" name="CommentUserName" required="">
+
+            <input class="form-control" type="text" placeholder="Konu" name="CommentTitle" required="">
+
+            <textarea class="form-control" placeholder="Yorumunuz" name="CommentContent" required=""></textarea>
+
+            <button type="submit" class="btn btn-primary submit">Yorum Yap</button>
+        </form>
+    </div>
+</div>
+<script>
+    $("#btn").click(function () {
+        let values = {
+            Mail: $("#Mail").val()
+        };
+        $.ajax({
+            type: "post",
+            url: "/NewsLetter/SubscribeMail/",
+            data: values,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+                // Sonuç işleme kodları buraya eklenir
+            }
+        });
+    });
+</script>*@
+
+@*<div class="comment-top">
+    <h4>Bir Yorum Ekleyin</h4>
+    <div class="comment-bottom">
+
+            <form method="post" action="@Url.Action("PartialAddComment", "Comment")">
+
+                <input class="form-control" type="text" placeholder="Adınız Soyadınız" name="CommentUserName" required>
+
+                <input class="form-control" type="text" placeholder="Konu" name="CommentTitle" required>
+
+               @* <input class="form-control" type="text" value="@item.BlogID" name="BlogID" required>
+
+
+
+                <textarea class="form-control" placeholder="Yorumunuz" name="CommentContent" required></textarea>
+
+                <button type="submit" class="btn btn-primary submit">Yorum Yap</button>
+            </form>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $("form").submit(function (e) {
+            e.preventDefault(); // Formun otomatik olarak gönderilmesini engeller
+
+            var values = {
+                CommentUserName: $("[name='CommentUserName']").val(),
+                //BlogID: $("[name='BlogID']").val(),
+                CommentTitle: $("[name='CommentTitle']").val(),
+                CommentContent: $("[name='CommentContent']").val()
+
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Comment/PartialAddComment",
+                data: values,
+                success: function (data) {
+                    // Başarılı bir şekilde tamamlandığında yapılacak işlemler buraya eklenir
+                },
+                error: function (xhr, status, error) {
+                    // Hata durumunda yapılacak işlemler buraya eklenir
+                }
+            });
+        });
+    });
+</script>
+*@
+<div class="comment-top">
+    <h4>Bir Yorum Ekleyin</h4>
+    <div class="comment-bottom">
+        <form method="post" action="@Url.Action("PartialAddComment", "Comment")">
+            <input class="form-control" type="text" placeholder="Adınız Soyadınız" name="CommentUserName" required>
+            <input class="form-control" type="text" placeholder="Konu" name="CommentTitle" required>
+            <textarea class="form-control" placeholder="Yorumunuz" name="CommentContent" required></textarea>
+            <button type="submit" class="btn btn-primary submit">Yorum Yap</button>
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("form").submit(function (e) {
+            e.preventDefault(); // Formun otomatik olarak gönderilmesini engeller
+
+            var values = {
+                CommentUserName: $("[name='CommentUserName']").val(),
+                CommentTitle: $("[name='CommentTitle']").val(),
+                CommentContent: $("[name='CommentContent']").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Comment/PartialAddComment",
+                data: values,
+                success: function (data) {
+                    // Başarılı bir şekilde tamamlandığında yapılacak işlemler buraya eklenir
+                },
+                error: function (xhr, status, error) {
+                    // Hata durumunda yapılacak işlemler buraya eklenir
+                }
+            });
+        });
+    });
+</script>
