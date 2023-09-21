@@ -9,13 +9,24 @@ using System.Threading.Tasks;
 
 namespace DataAccess_Layer.Repositories
 {
-    public class GenericRepository<T> : IGenericDal<T> where T : class
+    public  abstract class GenericRepository<T> : IGenericDal<T> where T : class
     {
+        protected readonly Context _context;
+
+
         Context c = new Context();
+
+        public GenericRepository(Context context)
+        {
+            _context = context;
+           
+        }
+
         public void Delete(T t)
         {
-            c.Remove(t);
-            c.SaveChanges();
+            _context.Set<T>().Remove(t);
+            //c.Remove(t);
+            //c.SaveChanges();
             
         }
 

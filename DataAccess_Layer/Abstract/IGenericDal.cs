@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DataAccess_Layer.Abstract
 {
     //Metotlardan önce entity parametresi gönderiyoruz ve bu bir classa ait tüm değerleri kullanacak
-    public interface IGenericDal<T> where T : class
+    public interface IGenericDal<T>// where T : class
     {
         // t türünde t entity çağırıldı
         void Insert(T t); //ekle

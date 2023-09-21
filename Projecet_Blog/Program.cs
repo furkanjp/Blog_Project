@@ -28,7 +28,7 @@ builder.Services.AddHttpsRedirection(opts =>
     opts.HttpsPort = 443;
 });
 //ýdentity konfigurasyonlarý
-builder.Services.AddDbContext<Context>();
+builder.Services.AddDbContext<Context>(); //context çözüldü
 builder.Services.AddIdentity<AppUser, AppRole>(x =>
 {
     x.Password.RequireUppercase = false;
